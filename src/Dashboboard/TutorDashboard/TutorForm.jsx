@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const TutorForm = () => {
   const { register, handleSubmit, formState: { errors }, reset} = useForm();
@@ -31,13 +32,13 @@ const TutorForm = () => {
       // Send to backend (future API)
       await axios.post("http://localhost:3000/tutors", tutorData);
 
-      alert("Application Submitted Successfully!");
+      toast.success("Application Submitted Successfully!");
       reset();
       setLoading(false);
     } 
     catch (error) {
       console.error(error);
-      alert("Image Upload Failed!");
+      toast.error("Image Upload Failed!");
       setLoading(false);
     }
   };

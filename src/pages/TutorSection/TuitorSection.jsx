@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
+import { Link } from "react-router";
 
 const TuisorSection = () => {
   const { data: tutors = [], isLoading } = useQuery({
@@ -27,7 +28,7 @@ const TuisorSection = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {tutors.map((tutor) => (
             <div
               key={tutor.id}
@@ -55,9 +56,11 @@ const TuisorSection = () => {
               </p>
 
               {/* Button */}
-              <button className="mt-4 w-full py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+              
+                <Link to={`/tutor/${tutor._id}`} className="mt-4 w-full py-2 btn bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                 View Profile
-              </button>
+              </Link>
+              
             </div>
           ))}
         </div>

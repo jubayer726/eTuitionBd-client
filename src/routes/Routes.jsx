@@ -23,6 +23,8 @@ import StudentDashboard from '../Dashboboard/StudentDashboard/StudentDashboard'
 import TutorDashboard from '../Dashboboard/TutorDashboard/TutorDashboard'
 import TutorForm from '../Dashboboard/TutorDashboard/TutorForm'
 import AdminDashboard from '../Dashboboard/AdminDashboard/AdminDashboard'
+import TuitionDetails from '../pages/TuitionList/TuitionDetails'
+import TutorDetails from '../pages/TutorSection/TutorDetails'
 
 
 export const router = createBrowserRouter([
@@ -55,6 +57,15 @@ export const router = createBrowserRouter([
         path: '/plant/:id',
         element: <PlantDetails />,
       },
+      {
+        path: '/tuition/:id',
+        element: <TuitionDetails/>
+      },
+      {
+        path: '/tutor/:id',
+        element: <TutorDetails/>
+      }
+      
     ],
   },
   { path: '/login', element: <Login /> },

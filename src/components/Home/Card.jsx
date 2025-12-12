@@ -2,10 +2,10 @@ import { Link } from "react-router";
 import avatarImg from "../../assets/images/cart.jpg";
 
 const Card = ({ stdn }) => {
-  const { title, image, subjects, salary, studentClass } = stdn;
+  const {_id, title, image, subjects, salary, studentClass } = stdn;
   return (
     <Link
-      to={`/plant/1`}
+      to={`/tuition/${_id}`}
       className="col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl"
     >
       <div>

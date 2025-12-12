@@ -46,10 +46,10 @@ const TutorList = () => {
               <h3 className="text-xl font-bold mt-4">{tutor.name}</h3>
 
               <p className="text-gray-600 text-sm mt-1">
-                Subject: <span className="font-medium">{tutor.subjects}</span>
+                Subject: <span className="font-medium">Suject: {tutor.subjects}</span>
               </p>
 
-              <p className="text-gray-600 text-sm">{tutor.address}</p>
+              <p className="text-gray-600 text-sm">Location: {tutor.address}</p>
 
               {/* Rating */}
               <p className="text-yellow-500 font-semibold mt-2">
@@ -57,9 +57,9 @@ const TutorList = () => {
               </p>
 
               {/* Button */}
-              <button className="mt-4 w-full py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+              <Link to={`/tutor/${tutor._id}`} className="mt-4 btn w-full py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                 View Profile
-              </button>
+              </Link>
             </div>
           ))}
         </div>
