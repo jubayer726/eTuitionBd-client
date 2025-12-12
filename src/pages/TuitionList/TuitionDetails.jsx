@@ -1,8 +1,23 @@
 import { useParams } from "react-router";
+import { useQuery } from '@tanstack/react-query';
+import axios from "axios";
+import avatarImg from "../../assets/images/cart.jpg";
+import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 
 const TuitionDetails = () =>{
     const {id} = useParams();
-    console.log(id);
+    
+    const {data: student = {}, isLoading} = useQuery({
+      queryKey: ['student', id],
+      queryFn: async () =>{
+        const result = await axios(`${import.meta.env.VITE_API_URL}/tuitions/${id}`)
+        return result.data;
+      }
+
+    })
+    if(isLoading) return <LoadingSpinner/>
+   const {name, studentClass, location, subjects, salary, daysPerWeek, image, description} = student
+
   return (
     <div className="max-w-4xl mx-auto p-6">
 
@@ -10,7 +25,7 @@ const TuitionDetails = () =>{
       <div className="bg-base-200 p-6 rounded-xl shadow">
         <h1 className="text-3xl font-bold">Student Details</h1>
         <p className="mt-2 text-gray-600">
-          Full information about the student, guardian, academic level and contact details.
+          Full information about the student, academic level and contact details.
         </p>
       </div>
 
@@ -19,25 +34,13 @@ const TuitionDetails = () =>{
         <h2 className="text-2xl font-semibold mb-4">Basic Information</h2>
 
         <div className="grid md:grid-cols-2 gap-4 text-gray-700">
-          <p><strong>Name:</strong> Rahim Ahmed</p>
-          <p><strong>Gender:</strong> Male</p>
-          <p><strong>Age:</strong> 14 Years</p>
-          <p><strong>Class:</strong> Class 8</p>
-          <p><strong>Medium:</strong> Bangla</p>
-          <p><strong>School:</strong> Dhanmondi Govt. Boys School</p>
-        </div>
-      </div>
-
-      {/* Guardian Info */}
-      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border">
-        <h2 className="text-2xl font-semibold mb-4">Guardian Information</h2>
-
-        <div className="grid md:grid-cols-2 gap-4 text-gray-700">
-          <p><strong>Guardian Name:</strong> Abdul Karim</p>
-          <p><strong>Relation:</strong> Father</p>
-          <p><strong>Phone Number:</strong> 017XXXXXXXX</p>
-          <p><strong>Alternate Phone:</strong> 018XXXXXXXX</p>
-          <p><strong>Occupation:</strong> Businessman</p>
+         <div> <img src={image && image? image: avatarImg} 
+         alt="Sudent Photo" className="w-40 h-48 object-cover rounded-lg"/></div>
+         <div>
+           <p><strong>Name:</strong> {name}</p>
+          <p><strong>Class:</strong> {studentClass}</p>
+          <p><strong>School:</strong> Dhanmondi Govt. School</p>
+         </div>
         </div>
       </div>
 
@@ -46,8 +49,7 @@ const TuitionDetails = () =>{
         <h2 className="text-2xl font-semibold mb-4">Address Information</h2>
 
         <p className="text-gray-700">
-          <strong>Full Address:</strong> House 12, Road 3, Dhanmondi, Dhaka
-        </p>
+          <strong>Full Address:</strong> {location}</p>
       </div>
 
       {/* Tuition Preference */}
@@ -55,10 +57,10 @@ const TuitionDetails = () =>{
         <h2 className="text-2xl font-semibold mb-4">Tuition Preference</h2>
 
         <div className="grid md:grid-cols-2 gap-4 text-gray-700">
-          <p><strong>Preferred Subjects:</strong> Math, Science</p>
+          <p><strong>Preferred Subjects:</strong> {subjects}</p>
           <p><strong>Preferred Schedule:</strong> Evening</p>
-          <p><strong>Days per Week:</strong> 3 Days</p>
-          <p><strong>Budget:</strong> 3000-4000 BDT / Month</p>
+          <p><strong>Days per Week:</strong> {daysPerWeek}</p>
+          <p><strong>Budget:</strong> {salary} BDT / Month</p>
         </div>
       </div>
 
@@ -67,7 +69,7 @@ const TuitionDetails = () =>{
         <h2 className="text-2xl font-semibold mb-4">Additional Notes</h2>
 
         <p className="text-gray-700">
-          Student needs extra support in Math and prefers a friendly teaching style.
+          {description}
         </p>
       </div>
 

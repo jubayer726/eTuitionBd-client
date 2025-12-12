@@ -30,11 +30,10 @@ const TutorList = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
-          {tutors.map((tutor) => (
-            <div
-              key={tutor.id}
+          {tutors.map((tutor, i) => (
+            <div key={i}
               className="bg-gray-50 rounded-xl shadow-md p-6 hover:shadow-lg transition"
-            >
+            > 
               {/* Image */}
               <img
                 src={tutor.photo}

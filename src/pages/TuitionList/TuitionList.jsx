@@ -54,8 +54,8 @@ const TuisionList = () => {
 
         {/* Tuition Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {tuitions.map((item) => (
-            <Link
+          {tuitions.map((item, i) => (
+            <Link key={i}
               to={`/tuition/${item._id}`}
               className="col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl"
             >

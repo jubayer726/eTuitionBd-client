@@ -1,4 +1,22 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useParams } from "react-router";
+import LoadingSpinner from "../../components/Shared/LoadingSpinner";
+
  const TutorDetails= () =>{
+  const {id} = useParams();
+
+      const {data: tutor = {}, isLoading} = useQuery({
+        queryKey: ['tutor', id],
+        queryFn: async () =>{
+          const result = await axios(`${import.meta.env.VITE_API_URL}/tutors/${id}`)
+          return result.data;
+        }
+  
+      })
+      if(isLoading) return <LoadingSpinner/>
+   
+     const {name, phone, address, subjects, salary, qualification, photo, email} = tutor;
   return (
     <div className="max-w-4xl mx-auto p-6">
       {/* Header */}
@@ -10,26 +28,25 @@
       </div>
 
       {/* Tuition Info */}
-      <div className="mt-6 grid md:grid-cols-2 gap-6">
+      <div className="mt-6 grid md:grid-cols-2 gap-6 border">
         
         {/* Tuition Card */}
-        <div className="bg-base-100 shadow rounded-xl p-5 border">
-          <h2 className="text-xl font-semibold">Tuition Information</h2>
-          <ul className="mt-3 space-y-2 text-gray-700">
-            <li><strong>Class:</strong> Class 8</li>
-            <li><strong>Subject:</strong> Math</li>
-            <li><strong>Medium:</strong> Bangla</li>
-            <li><strong>Location:</strong> Dhanmondi, Dhaka</li>
-          </ul>
+        <div className="bg-base-100 shadow rounded-xl pb-5">
+          <h2 className="text-xl font-semibold p-5 text-center">Tutor</h2>
+          <div className="flex items-center justify-center"> <img src={photo} 
+            alt="Sudent Photo" className="w-full h-48 object-cover rounded-2xl px-5"/></div>
         </div>
 
         {/* Teacher Card */}
-        <div className="bg-base-100 shadow rounded-xl p-5 border">
+        <div className="bg-base-100 shadow rounded-xl p-5">
           <h2 className="text-xl font-semibold">Teacher Information</h2>
           <ul className="mt-3 space-y-2 text-gray-700">
-            <li><strong>Name:</strong> Mr. Arif Hasan</li>
-            <li><strong>Experience:</strong> 5+ Years</li>
-            <li><strong>Qualification:</strong> BSc in Mathematics</li>
+            <li><strong>Name:</strong> {name}</li>
+            <li><strong>Qualification:</strong> {qualification}</li>
+            <li><strong>Subject:</strong> {subjects}</li>
+            <li><strong>Locatin:</strong> {address}</li>
+            <li><strong>Email:</strong> {email}</li>
+            <li><strong>Mobile:</strong> {phone}</li>
             <li><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.5)</li>
           </ul>
         </div>
@@ -64,7 +81,7 @@
 
         <div className="flex justify-between text-lg">
           <p>Monthly Fee</p>
-          <p className="font-bold">3000 BDT</p>
+          <p className="font-bold">{salary}</p>
         </div>
       </div>
 

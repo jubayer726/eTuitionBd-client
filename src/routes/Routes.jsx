@@ -88,6 +88,14 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: 'student-dashboard',
+        element: (
+          <PrivateRoute>
+            <StudentDashboard/>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: 'student-form',
         element: (
           <PrivateRoute>
@@ -111,22 +119,7 @@ export const router = createBrowserRouter([
       //     </PrivateRoute>
       //   ),
       // },
-      {
-        path: 'profile',
-        element: (
-          <PrivateRoute>
-            <Profile />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: 'student-dashboard',
-        element: (
-          <PrivateRoute>
-            <StudentDashboard/>
-          </PrivateRoute>
-        ),
-      },
+           
       {
         path: 'tutor-dashboard',
         element: (
@@ -148,6 +141,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AdminDashboard/>
+          </PrivateRoute>
+        ),
+      },
+       {
+        path: 'profile',
+        element: (
+          <PrivateRoute>
+            <Profile />
           </PrivateRoute>
         ),
       },

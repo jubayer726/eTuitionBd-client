@@ -4,14 +4,15 @@ import Tuitions from '../../components/Home/Tuitions';
 import TutorList from '../TutorSection/TutorList';
 
 
-const toutorsPromise = fetch('./tutors.json').then(res=>res.json());
+const toutorsPromise = fetch('/tutors.json')
+.then(res=>res.json());
 const Home = () => {
   return (
     <div>
       <HeroSection/>
       <Tuitions/>
       <TutorList></TutorList>
-      <OurTutors toutorsPromise={toutorsPromise}/>
+      <OurTutors toutorsPromise={toutorsPromise}></OurTutors>
     </div>
   )
 }
