@@ -78,20 +78,19 @@ const DashBoard = () => {
               </Link>
             </li>
             {/* List item */}
-            <li>
-              <Link
-                to="/dashboard/student-dashboard"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right "
+            <NavLink  to="/dashboard/student-dashboard" className={({ isActive }) =>isActive? "bg-gray-300": "" }>
+              <h2
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
                 data-tip="Student-Dashboard"
               >
                 <PiStudentBold />
                 <span className="is-drawer-close:hidden">Student Dashboard</span>
-              </Link>
-            </li>
+              </h2>
+            </NavLink>
             <NavLink to="/dashboard/student-form" className={({ isActive }) =>isActive? "bg-gray-300": "" }>
               
               <h2
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
                 data-tip="Student-Form"
               >
                 <FaWpforms />
@@ -101,18 +100,18 @@ const DashBoard = () => {
             {/* Assign Rider Role */}
             {
               // role === 'rider' && <>
-              <li>
-                <Link
-                  to="/dashboard/tutor-dashboard"
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              <NavLink to="/dashboard/tutor-dashboard" className={({isActive})=> isActive? "bg-gray-300" : ""}>
+                  
+                <h2
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
                   data-tip="Tutor-Dashboard"
                 >
                   <FaTasks />
                   <span className="is-drawer-close:hidden">
                     Tutor-Dashboard
                   </span>
-                </Link>
-              </li>
+                </h2>
+              </NavLink>
               // </>
             }
 
@@ -121,16 +120,15 @@ const DashBoard = () => {
             // role === "admin" && 
             (
               <>
-                <li>
-                  <Link
-                    to="/dashboard/tutor-form"
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                <NavLink to="/dashboard/tutor-form" className={({isActive})=> isActive? "bg-gray-300" : ""}>
+                  <h2
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
                     data-tip="Tutor-Form"
                   >
                     <GiTeacher />
                     <span className="is-drawer-close:hidden">Tutor Form</span>
-                  </Link>
-                </li>
+                  </h2>
+                </NavLink>
 
                 {/* <li>
                   <Link
@@ -145,28 +143,28 @@ const DashBoard = () => {
                   </Link>
                 </li> */}
 
-                <li>
-                  <Link
-                    to="/dashboard/admin-dashboard"
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                <NavLink to="/dashboard/admin-dashboard" className={({isActive})=> isActive? "bg-gray-300" : ""}>
+                  <h2
+                    
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
                     data-tip="Users-Management"
                   >
                     <FaUsersGear />
                     <span className="is-drawer-close:hidden">
                       Users-Management
                     </span>
-                  </Link>
-                </li>
+                  </h2>
+                </NavLink>
               </>
             )}
 
-            <li>
+            <NavLink to='/dashboard/profile' className={({isActive})=> isActive? "bg-gray-300" : ""}>
               <button
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Settings"
               >
                 {/* Settings icon */}
-                <Link to='/dashboard/profile'>
+                <h2 className="hover:bg-gray-200">
                     <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -175,7 +173,7 @@ const DashBoard = () => {
                   strokeWidth="2"
                   fill="none"
                   stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
+                  className="my-1.5 inline-block size-4 "
                 >
                   <path d="M20 7h-9"></path>
                   <path d="M14 17H5"></path>
@@ -183,9 +181,9 @@ const DashBoard = () => {
                   <circle cx="7" cy="7" r="3"></circle>
                 </svg>
                 <span className="is-drawer-close:hidden">Settings</span>
-                </Link>
+                </h2>
               </button>
-            </li>
+            </NavLink>
           </ul>
         </div>
       </div>

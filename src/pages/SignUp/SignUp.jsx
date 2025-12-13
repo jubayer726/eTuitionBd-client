@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { imageUpload } from "../../Utils";
+import axios from "axios";
 
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle } = useAuth();
@@ -15,17 +16,30 @@ const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   // console.log(errors);
   const onSubmit = async (data) => {
-    const { name, role, mobile, image, email, password } = data;
+    const { name, role, image, email, password } = data;
     const imageFile = image[0];
 
     try {
-      const imageURL = await imageUpload(imageFile);
+      const photoURL = await imageUpload(imageFile);
 
       //1. User Registration
       const result = await createUser(email, password);
 
+      // User API
+      const userInfo = {
+        email: data.email,
+        displayName: data.name,
+        role: data.role,
+        photoURL: photoURL
+      }
+      axios.post('http://localhost:3000/users', userInfo)
+      .then(result=>{
+        if(result.data.insertedId){
+          console.log('user created in the database');
+        }
+      })
       // Save username & profile photo
-      await updateUserProfile(name, role, mobile, imageURL);
+      await updateUserProfile(name, photoURL, role);
 
       navigate(from, { replace: true });
       toast.success("Signup Successful");
@@ -36,12 +50,25 @@ const SignUp = () => {
       toast.error(err?.message);
     }
   };
-
   // Handle Google Signin
   const handleGoogleSignIn = async () => {
     try {
       //User Registration using google
-      await signInWithGoogle();
+      await signInWithGoogle()
+      .then(result=>{
+        console.log(result.user);
+        const userInfo = {
+          email: result.user.email,
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
+          role: 'student',
+        }
+        axios.post('http://localhost:3000/users', userInfo)
+        .then(result=>{
+          console.log(result.data);
+           navigate(from, { replace: true });
+        })
+      })
 
       navigate(from, { replace: true });
       toast.success("Signup Successful");
@@ -88,7 +115,7 @@ const SignUp = () => {
             </div>
             {/* Phone Number */}
             <div>
-              <label htmlFor="email" className="block mb-2 text-sm">
+              <label htmlFor="mobile" className="block mb-2 text-sm">
                 Mobile Number
               </label>
               <input
@@ -123,14 +150,14 @@ const SignUp = () => {
                 id="image"
                 accept="image/*"
                 className="block w-full text-sm text-gray-500
-      file:mr-4 file:py-2 file:px-4
-      file:rounded-md file:border-0
-      file:text-sm file:font-semibold
-      file:bg-lime-50 file:text-lime-700
-      hover:file:bg-lime-100
-      bg-gray-100 border border-dashed border-lime-300 rounded-md cursor-pointer
-      focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-lime-400
-      py-2"
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-md file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-lime-50 file:text-lime-700
+                    hover:file:bg-lime-100
+                    bg-gray-100 border border-dashed border-lime-300 rounded-md cursor-pointer
+                    focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-lime-400
+                    py-2"
                 {...register("image")}
               />
               <p className="mt-1 text-xs text-gray-400">
@@ -147,8 +174,8 @@ const SignUp = () => {
                 {...register("role", {required: "Role is required"})}
                 className='w-full px-4 py-3 border-lime-300 focus:outline-lime-500 rounded-md bg-gray-200'
               >
-                <option value='Indoor'>student</option>
-                <option value='Outdoor'>tutor</option>
+                <option value='student'>student</option>
+                <option value='tutor'>tutor</option>
                 
               </select>
             </div>
