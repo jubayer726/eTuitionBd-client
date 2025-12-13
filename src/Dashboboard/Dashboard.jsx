@@ -81,10 +81,10 @@ const DashBoard = () => {
             <NavLink  to="/dashboard/student-dashboard" className={({ isActive }) =>isActive? "bg-gray-300": "" }>
               <h2
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
-                data-tip="Student-Dashboard"
+                data-tip="My-Tuitions"
               >
                 <PiStudentBold />
-                <span className="is-drawer-close:hidden">Student Dashboard</span>
+                <span className="is-drawer-close:hidden">My Tuitions</span>
               </h2>
             </NavLink>
             <NavLink to="/dashboard/student-form" className={({ isActive }) =>isActive? "bg-gray-300": "" }>

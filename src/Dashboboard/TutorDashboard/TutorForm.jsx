@@ -88,14 +88,14 @@ const TutorForm = () => {
 
         {/* Age */}
         <div>
-          <label className="font-medium">Age</label>
+          <label className="font-medium">Experiance</label>
           <input
             type="number"
-            {...register("age", { required: true })}
+            {...register("experiance", { required: true })}
             className="border p-3 rounded w-full"
-            placeholder="Your age"
+            placeholder="Your experiance"
           />
-          {errors.age && <p className="text-red-500 text-sm">Age is required</p>}
+          {errors.experiance && <p className="text-red-500 text-sm">Experiance is required</p>}
         </div>
 
         {/* Qualification */}
@@ -159,6 +159,19 @@ const TutorForm = () => {
           />
           {errors.photo && (
             <p className="text-red-500 text-sm">Photo is required</p>
+          )}
+        </div>
+
+        {/* Expected salary */}
+        <div className="md:col-span-2">
+          <label className="font-medium">Expected salary</label>
+          <input type="number"
+            {...register("price", { required: true })}
+            className="border p-3 rounded w-full"
+            placeholder="Expected salary USD/month"
+          />
+          {errors.price && (
+            <p className="text-red-500 text-sm">Salary is required</p>
           )}
         </div>
 

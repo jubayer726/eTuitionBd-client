@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "react-router";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
+import useAuth from "../../hooks/useAuth";
 
  const TutorDetails= () =>{
+  const {user} = useAuth();
   const {id} = useParams();
 
       const {data: tutor = {}, isLoading} = useQuery({
@@ -16,13 +18,35 @@ import LoadingSpinner from "../../components/Shared/LoadingSpinner";
       })
       if(isLoading) return <LoadingSpinner/>
    
-     const {name, phone, address, subjects, salary, qualification, photo, email} = tutor;
+     const {_id, name, phone, address, subjects, price, qualification, photo, email} = tutor || {};
+
+     const handlePayment = async () =>{
+      const paymentInfo = {
+        tutorId: _id,
+        name, 
+        photo,
+        subjects,
+        address,
+        qualification,
+        email,
+        quantity: 1,
+        price,
+        student: {
+          name: user?.displayName,
+          email: user?.email,
+          image: user?.photoURL,
+        }
+      }
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/create-checkout-session`, paymentInfo )
+      console.log(data.url);
+     }
+
   return (
     <div className="max-w-4xl mx-auto p-6">
       {/* Header */}
       <div className="bg-base-200 p-6 rounded-xl shadow">
-        <h1 className="text-3xl font-bold">Tuition Details</h1>
-        <p className="mt-2 text-gray-600">
+        <h1 className="text-3xl font-bold text-center">Tutor Details</h1>
+        <p className="mt-2 text-gray-600 text-center">
           Find all information about the tuition class, teacher, schedule, and fees.
         </p>
       </div>
@@ -80,14 +104,14 @@ import LoadingSpinner from "../../components/Shared/LoadingSpinner";
         <h2 className="text-xl font-semibold mb-3">Tuition Fees</h2>
 
         <div className="flex justify-between text-lg">
-          <p>Monthly Fee</p>
-          <p className="font-bold">{salary}</p>
+          <p>Monthly Fee (USD)</p>
+          <p className="font-bold">{price}</p>
         </div>
       </div>
 
       {/* Apply Button */}
       <div className="mt-8 text-center">
-        <button className="btn btn-primary btn-wide text-lg">Apply for Tuition</button>
+        <button onClick={handlePayment} className="btn btn-primary btn-wide text-lg">Apply for Tuition</button>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import Home from '../pages/Home/Home'
 import ErrorPage from '../pages/ErrorPage'
 import Login from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
-import PlantDetails from '../pages/PlantDetails/PlantDetails'
+// import PlantDetails from '../pages/PlantDetails/PlantDetails'
 import PrivateRoute from './PrivateRoute'
 // import DashboardLayout from '../layouts/DashboardLayout'
 import ManageUsers from '../pages/Dashboard/Admin/ManageUsers'
@@ -25,6 +25,9 @@ import TutorForm from '../Dashboboard/TutorDashboard/TutorForm'
 import AdminDashboard from '../Dashboboard/AdminDashboard/AdminDashboard'
 import TuitionDetails from '../pages/TuitionList/TuitionDetails'
 import TutorDetails from '../pages/TutorSection/TutorDetails'
+import UpdateTuition from '../pages/TuitionList/UpdateTuitionPage'
+import PaymentSuccess from '../pages/Payments/PaymentSuccess'
+import PayemtCancel from '../pages/Payments/PayemtCancel'
 
 
 export const router = createBrowserRouter([
@@ -53,10 +56,10 @@ export const router = createBrowserRouter([
         path: 'contact',
         element: <Contact />,
       },
-      {
-        path: '/plant/:id',
-        element: <PlantDetails />,
-      },
+      // {
+      //   path: '/plant/:id',
+      //   element: <PlantDetails />,
+      // },
       {
         path: '/tuition/:id',
         element: <TuitionDetails/>
@@ -64,6 +67,18 @@ export const router = createBrowserRouter([
       {
         path: '/tutor/:id',
         element: <TutorDetails/>
+      },
+      {
+        path: '/update-tuition/:id',
+        element: <UpdateTuition/>
+      },
+      {
+        path: '/payment-success',
+        element: <PaymentSuccess/>
+      },
+       {
+        path: '/payment-cancel',
+        element: <PayemtCancel/>
       }
       
     ],

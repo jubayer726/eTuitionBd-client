@@ -1,11 +1,13 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
 import avatarImg from "../../assets/images/cart.jpg";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
+import toast from "react-hot-toast";
 
 const TuitionDetails = () =>{
     const {id} = useParams();
+    const navigate = useNavigate()
     
     const {data: student = {}, isLoading} = useQuery({
       queryKey: ['student', id],
@@ -16,15 +18,29 @@ const TuitionDetails = () =>{
 
     })
     if(isLoading) return <LoadingSpinner/>
-   const {name, studentClass, location, subjects, salary, daysPerWeek, image, description} = student
+   const {name, studentClass, location, subjects, salary, daysPerWeek, image, description} = student;
+
+   const handleDelete = async () => {
+  const confirm = window.confirm("Are you sure you want to delete this tuition?");
+  if (!confirm) return;
+
+  try {
+    await axios.delete(`${import.meta.env.VITE_API_URL}/tuitions/${id}`);
+    toast.success("Tuition Deleted Successfully!");
+    navigate("/");
+  } catch (error) {
+    console.error(error);
+    toast.error("Failed to delete tuition");
+  }
+};
 
   return (
     <div className="max-w-4xl mx-auto p-6">
 
       {/* Header */}
       <div className="bg-base-200 p-6 rounded-xl shadow">
-        <h1 className="text-3xl font-bold">Student Details</h1>
-        <p className="mt-2 text-gray-600">
+        <h1 className="text-3xl font-bold text-center">Student Details</h1>
+        <p className="mt-2 text-gray-600 text-center">
           Full information about the student, academic level and contact details.
         </p>
       </div>
@@ -75,8 +91,8 @@ const TuitionDetails = () =>{
 
       {/* Buttons */}
       <div className="mt-8 flex justify-center gap-4">
-        <button className="btn btn-primary">Edit Details</button>
-        <button className="btn btn-secondary">Message Guardian</button>
+        <button  onClick={() => navigate(`/update-tuition/${id}`)} className="btn btn-primary">Edit Details</button>
+        <button onClick={handleDelete} className="btn btn-secondary">Delete Post</button>
       </div>
 
     </div>
