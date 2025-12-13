@@ -38,7 +38,7 @@ import useAuth from "../../hooks/useAuth";
         }
       }
       const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/create-checkout-session`, paymentInfo )
-      console.log(data.url);
+      window.location.href = data.url;
      }
 
   return (
@@ -111,7 +111,7 @@ import useAuth from "../../hooks/useAuth";
 
       {/* Apply Button */}
       <div className="mt-8 text-center">
-        <button onClick={handlePayment} className="btn btn-primary btn-wide text-lg">Apply for Tuition</button>
+        <button onClick={handlePayment} className="btn btn-primary btn-wide text-lg">Pay & Apply</button>
       </div>
     </div>
   );
