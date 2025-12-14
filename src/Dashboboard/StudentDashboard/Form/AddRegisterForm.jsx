@@ -83,15 +83,15 @@ const AddRegisterForm = () => {
           <p className="text-red-500">Subjects are required</p>
         )}
 
-        {/* Salary */}
+        {/*  Budget */}
         <input
-          {...register("salary", { required: true })}
+          {...register("budget", { required: true })}
           type="number"
-          placeholder="Salary (BDT)"
+          placeholder="Budget (BDT)"
           className="w-full border px-4 py-2 rounded"
         />
-        {errors.salary && (
-          <p className="text-red-500">Salary is required</p>
+        {errors.budget && (
+          <p className="text-red-500">Budget is required</p>
         )}
 
         {/* Location */}

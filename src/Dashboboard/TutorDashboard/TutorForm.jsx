@@ -27,6 +27,7 @@ const TutorForm = () => {
       const tutorData = {
         ...data,
         photo: photoURL,
+         status: "pending",
         email: user.email,
       };
 

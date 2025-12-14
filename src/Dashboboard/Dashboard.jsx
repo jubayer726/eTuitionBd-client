@@ -91,10 +91,10 @@ const DashBoard = () => {
               
               <h2
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
-                data-tip="Student-Form"
+                data-tip="Post New Tuition"
               >
                 <FaWpforms />
-                <span className="is-drawer-close:hidden">Student Form</span>
+                <span className="is-drawer-close:hidden">Post New Tuition</span>
               </h2>
             </NavLink>
             {/* Assign Rider Role */}
@@ -143,7 +143,7 @@ const DashBoard = () => {
                   </Link>
                 </li> */}
 
-                <NavLink to="/dashboard" className={({isActive})=> isActive? "bg-gray-300" : ""}>
+                <NavLink to="/dashboard/admin-dashboard" className={({isActive})=> isActive? "bg-gray-300" : ""}>
                   <h2
                     
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"

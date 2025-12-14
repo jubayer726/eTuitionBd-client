@@ -4,8 +4,16 @@ import axios from "axios";
 import avatarImg from "../../assets/images/cart.jpg";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
+// import { useState } from "react";
 
 const TuitionDetails = () =>{
+  const { user } = useAuth();
+  // const [expectedSalary, setExpectedSalary] = useState("");
+  // const [message, setMessage] = useState("");
+
+  //-----------------
+
     const {id} = useParams();
     const navigate = useNavigate()
     
@@ -21,18 +29,45 @@ const TuitionDetails = () =>{
    const {name, studentClass, location, subjects, salary, daysPerWeek, image, description} = student;
 
    const handleDelete = async () => {
-  const confirm = window.confirm("Are you sure you want to delete this tuition?");
-  if (!confirm) return;
+    const confirm = window.confirm("Are you sure you want to delete this tuition?");
+    if (!confirm) return;
 
-  try {
-    await axios.delete(`${import.meta.env.VITE_API_URL}/tuitions/${id}`);
-    toast.success("Tuition Deleted Successfully!");
-    navigate("/");
-  } catch (error) {
-    console.error(error);
-    toast.error("Failed to delete tuition");
-  }
-};
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/tuitions/${id}`);
+      toast.success("Tuition Deleted Successfully!");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to delete tuition");
+    }
+  };
+
+//-------------------
+  const handleApply = async () => {
+    const applicationData = {
+      tuitionId: student._id,
+      tuitionTitle: student.title,
+      studentEmail: student.email,
+      studentName: student.name,
+      subjects: student.subjects,
+      tutorEmail: user.email,
+      tutorName: user.displayName,
+      tutorPhoto: user.photoURL,
+      price:  parseInt(student.salary),
+    };
+
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/applications`,
+        applicationData
+      );
+
+      toast.success("Applied successfully!");
+    } catch (err) {
+      console.log(err.message);
+      toast.error("Failed to apply");
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -91,8 +126,10 @@ const TuitionDetails = () =>{
 
       {/* Buttons */}
       <div className="mt-8 flex justify-center gap-4">
+        <button onClick={handleApply} className="btn btn-info"> Apply Now</button>
         <button  onClick={() => navigate(`/update-tuition/${id}`)} className="btn btn-primary">Edit Details</button>
         <button onClick={handleDelete} className="btn btn-secondary">Delete Post</button>
+        
       </div>
 
     </div>

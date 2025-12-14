@@ -96,8 +96,8 @@ export const router = createBrowserRouter([
       //   ),
       // },
       {
-        index: true,
-        // path: 'admin-dashboard',
+        // index: true,
+        path: 'admin-dashboard',
         element: (
           <PrivateRoute>
             <AdminDashboard/>

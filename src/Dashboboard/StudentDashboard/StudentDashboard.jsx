@@ -1,72 +1,167 @@
-import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const StudentDashboard = () => {
-    return (
-        <div className="p-6 bg-gray-100 min-h-screen">
-      <h2 className="text-2xl font-bold mb-6">Student Dashboard</h2>
+  const { user } = useAuth();
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="text-xl font-bold">Enrolled Tuitions</h3>
-          <p className="text-3xl font-bold text-indigo-600 mt-3">05</p>
-        </div>
+  const { data: tuitions = [], refetch } = useQuery({
+    queryKey: ["studentTuitions", user?.email],
+    enabled: !!user?.email,
+    queryFn: async () => {
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/student/tuitions/${user.email}`
+      );
+      return res.data;
+    },
+  });
 
-        <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="text-xl font-bold">Upcoming Classes</h3>
-          <p className="text-3xl font-bold text-green-600 mt-3">03</p>
-        </div>
+  const { data: applications = [] } = useQuery({
+  queryKey: ["applications"],
+  // enabled: !!user?.email,
+  queryFn: async () => {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/applications`);
+    return res.data;
+  },
+});
 
-        <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="text-xl font-bold">Messages</h3>
-          <p className="text-3xl font-bold text-yellow-600 mt-3">12</p>
+const {studentName, price, subjects, address,  } = applications || {}
+
+const handlePayment = async (_id) =>{
+      const paymentInfo = {
+        tutorId: _id,
+        name: studentName, 
+        photo: user.photo,
+        subjects,
+        address,
+        qualification: "5",
+        email: user.email,
+        quantity: 1,
+        price,
+        student: {
+          name: user?.displayName,
+          email: user?.email,
+          image: user?.photoURL,
+        }
+      }
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/create-checkout-session`, paymentInfo )
+      // window.location.href = data.url;
+      console.log(data.url);
+     }
+console.log(applications);
+     const handleReject = async (id) => {
+      const confirm = window.confirm("Are you sure you want to delete this tuition?");
+      if (!confirm) return;
+
+      try {
+        await axios.delete(`${import.meta.env.VITE_API_URL}/applications/${id}`);
+        toast.success("Tuition Deleted Successfully!");
+        refetch();
+      } catch (error) {
+        console.error(error);
+        toast.error("Failed to delete tuition");
+      }
+    };
+
+  return (
+    <div>
+      <div className="border border-gray-600 p-5 m-5">
+        <h2 className="text-2xl font-bold mb-4 p-5">My Approved Tuitions</h2>
+        <div className="overflow-x-auto">
+          <table className="table table-zebra">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Subject</th>
+                <th>Salary</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tuitions.map((t, i) => (
+                <tr key={t._id}>
+                  <th>{i + 1}</th>
+                  <td>{t.title}</td>
+                  <td>{t.subjects}</td>
+                  <td>{t.salary} tk/month</td>
+                  <td>{t.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
-      {/* Enrolled Tuition Section */}
-      <div className="bg-white p-6 rounded-xl shadow mb-8">
-        <h3 className="text-xl font-bold mb-4">Your Tuitions</h3>
-        <ul className="space-y-3">
-          <li className="p-4 bg-gray-50 rounded-lg flex justify-between">
-            <span>Math Tuition (Rahim Sir)</span>
-            <button className="text-indigo-600 font-medium">View</button>
-          </li>
-          <li className="p-4 bg-gray-50 rounded-lg flex justify-between">
-            <span>English Grammar (Nusrat Jahan)</span>
-            <button className="text-indigo-600 font-medium">View</button>
-          </li>
-        </ul>
-      </div>
+      <div className="border border-gray-600 p-5 m-5">
+        <h2 className="text-2xl font-bold mb-4 p-5">Tutor Applycation</h2>
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>
+                  <label>
+                    <input type="checkbox" className="checkbox" />
+                  </label>
+                </th>
+                <th>Tutor Photo</th>
+                <th>Tutor Name</th>
+                <th>Subject</th>
+                <th>Salary (USD)</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {applications.map((t) => (
+              <tr key={t._id}>
+                <th>
+                  <label>
+                    <input type="checkbox" className="checkbox" />
+                  </label>
+                </th>
+                <td>
+                  <div className="flex items-center gap-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-12 w-12">
+                        <img
+                          src={t.tutorPhoto}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>{t.tutorName}</td>
+                <td>{t.subjects}</td>
+                <td>{t.price}</td>
+                <td>{t.tutorEmail}</td>
+                <th>
+                  <button
+                    onClick={() => handlePayment(t._id)}
+                    className="btn btn-success btn-sm mt-2 mx-2"
+                  >
+                    Accept & Pay
+                  </button>
 
-      {/* Payment History */}
-      <div className="bg-white p-6 rounded-xl shadow">
-        <h3 className="text-xl font-bold mb-4">Payment History</h3>
-
-        <table className="w-full text-left">
-          <thead>
-            <tr className="border-b">
-              <th className="p-3">Date</th>
-              <th className="p-3">Amount</th>
-              <th className="p-3">Status</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr className="border-b">
-              <td className="p-3">2025-01-10</td>
-              <td className="p-3">$20</td>
-              <td className="p-3 text-green-600 font-medium">Paid</td>
-            </tr>
-            <tr>
-              <td className="p-3">2025-01-01</td>
-              <td className="p-3">$18</td>
-              <td className="p-3 text-green-600 font-medium">Paid</td>
-            </tr>
-          </tbody>
-        </table>
+                  <button
+                    onClick={() => handleReject(t._id)}
+                    className="btn btn-error btn-sm mt-2 "
+                  >
+                    Reject
+                  </button>
+                </th>
+              </tr>
+               ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default StudentDashboard;
