@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import avatarImg from "../../assets/images/cart.jpg";
+import { Button } from "../Button/Button";
 
 const Card = ({ stdn }) => {
   const {_id, title, image, subjects, salary, studentClass } = stdn;

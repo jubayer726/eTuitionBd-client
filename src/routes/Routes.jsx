@@ -24,6 +24,11 @@ import PayemtCancel from '../pages/Payments/PayemtCancel'
 import UpdateProfile from '../pages/Dashboard/Common/UpdateProfile'
 import MyTuitions from '../Dashboboard/StudentDashboard/MyTuitions'
 import EditTuition from '../Dashboboard/StudentDashboard/EditTuition'
+import UsersManagement from '../Dashboboard/AdminDashboard/UsersManagement'
+import AdminRoute from './AdminRoute'
+import AdminReports from '../Dashboboard/AdminDashboard/AdminReports'
+import TuitionTypes from '../components/Home/TuitionType/TuitionType'
+import HowItWorks from '../components/Home/HowItWork/HowItWorks'
 
 
 export const router = createBrowserRouter([
@@ -60,10 +65,14 @@ export const router = createBrowserRouter([
         path: '/tutor/:id',
         element: <TutorDetails/>
       },
-      // {
-      //   path: '/update-tuition/:id',
-      //   element: <UpdateTuition/>
-      // },
+      {
+        path: '/tution-type',
+        element: <TuitionTypes/>
+      },
+      {
+        path: '/howIt-work',
+        element: <HowItWorks/>
+      },
       {
         path: '/payment-success',
         element: <PaymentSuccess/>
@@ -97,9 +106,25 @@ export const router = createBrowserRouter([
         // index: true,
         path: 'admin-dashboard',
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <AdminDashboard/>
-          </PrivateRoute>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'users-management',
+        element: (
+          <AdminRoute>
+            <UsersManagement/>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'reports',
+        element: (
+          <AdminRoute>
+            <AdminReports/>
+          </AdminRoute>
         ),
       },
       {
@@ -133,16 +158,7 @@ export const router = createBrowserRouter([
       {
         path: 'edit-tuition/:id',
         element: <EditTuition/>
-      },
-      // {
-      //   path: 'manage-users',
-      //   element: (
-      //     <PrivateRoute>
-      //       <ManageUsers />
-      //     </PrivateRoute>
-      //   ),
-      // },
-           
+      },           
       {
         path: 'tutor-dashboard',
         element: (

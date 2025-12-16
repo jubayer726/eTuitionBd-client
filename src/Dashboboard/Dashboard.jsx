@@ -8,7 +8,8 @@ import { FaTasks } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
 import useAuth from "../hooks/useAuth";
 import { FiLogOut } from "react-icons/fi";
-import { MdOutlineEditNotifications } from "react-icons/md";
+import { MdOutlineEditNotifications, MdOutlineSignpost} from "react-icons/md";
+import { TbReportMoney } from "react-icons/tb";
 
 
 
@@ -165,15 +166,44 @@ const DashBoard = () => {
                   </Link>
                 </li> */}
 
-                <NavLink to="/dashboard/admin-dashboard" className={({isActive})=> isActive? "bg-gray-300" : ""}>
+                  {/* User Managemt */}
+                <NavLink to="/dashboard/users-management" className={({isActive})=> isActive? "bg-gray-300" : ""}>
                   <h2
                     
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
-                    data-tip="Users-Management"
+                    data-tip="Manage Users"
                   >
                     <FaUsersGear />
                     <span className="is-drawer-close:hidden">
-                      Users-Management
+                      Manage Users
+                    </span>
+                  </h2>
+                </NavLink>
+
+                {/* Tuition Management */}
+                  <NavLink to="/dashboard/admin-dashboard" className={({isActive})=> isActive? "bg-gray-300" : ""}>
+                  <h2
+                    
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                    data-tip="Manage Tuition"
+                  >
+                    <MdOutlineSignpost />
+                    <span className="is-drawer-close:hidden">
+                      Manage Tuitions
+                    </span>
+                  </h2>
+                </NavLink>
+
+                {/* Admin Report */}
+                  <NavLink to="/dashboard/reports" className={({isActive})=> isActive? "bg-gray-300" : ""}>
+                  <h2
+                    
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                    data-tip="Reports & Analytics"
+                  >
+                    <TbReportMoney />
+                    <span className="is-drawer-close:hidden">
+                      Reports & Analytics
                     </span>
                   </h2>
                 </NavLink>
