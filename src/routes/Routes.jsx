@@ -94,14 +94,6 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      // {
-      //   index: true,
-      //   element: (
-      //     <PrivateRoute>
-      //       <Statistics />
-      //     </PrivateRoute>
-      //   ),
-      // },
       {
         // index: true,
         path: 'admin-dashboard',
@@ -114,17 +106,21 @@ export const router = createBrowserRouter([
       {
         path: 'users-management',
         element: (
-          <AdminRoute>
+          <PrivateRoute>
+            <AdminRoute>
             <UsersManagement/>
           </AdminRoute>
+          </PrivateRoute>
         ),
       },
       {
         path: 'reports',
         element: (
-          <AdminRoute>
-            <AdminReports/>
-          </AdminRoute>
+          <PrivateRoute>
+            <AdminRoute>
+              <AdminReports/>
+            </AdminRoute>
+          </PrivateRoute>
         ),
       },
       {
@@ -151,10 +147,6 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      //  {
-      //   path: 'update-tuition/:id',
-      //   element: <UpdateTuition/>
-      // },
       {
         path: 'edit-tuition/:id',
         element: <EditTuition/>
@@ -191,10 +183,6 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      // {
-      //   path: 'manage-orders',
-      //   element: <ManageOrders />,
-      // },
     
     ],
   },
