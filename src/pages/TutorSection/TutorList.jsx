@@ -56,14 +56,14 @@ const TutorList = () => {
               </p>
 
               {/* Button */}
-              <Link to={`/tutor/${tutor._id}`} className="mt-4 btn w-full py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+              <Link to={`/tutor/${tutor._id}`} className="mt-4 btn w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-indigo-700">
                 View Profile
               </Link>
             </div>
           ))}
         </div>
         <div className='flex justify-center'>
-        <Link to ='/tutors' className='btn p-5 m-10 bg-info text-white font-bold'>Show More</Link>
+        <Link to ='/tutors' className='btn p-5 m-10 bg-purple-600 text-white font-bold'>Show More</Link>
       </div>
       </div>
     </div>

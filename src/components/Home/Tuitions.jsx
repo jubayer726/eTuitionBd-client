@@ -38,7 +38,7 @@ const Tuitions = () => {
       : null
       }
       <div className='flex justify-center'>
-        <Link to ='/tuitions' className='btn p-5 m-10 bg-info text-white font-bold'>Show More</Link>
+        <Link to ='/tuitions' className='btn p-5 m-10 bg-purple-600 text-white font-bold'>Show More</Link>
       </div>
     </Container>
   )

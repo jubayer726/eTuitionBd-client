@@ -3,7 +3,7 @@ import { MdClass, MdSubject } from "react-icons/md";
 import { Link } from "react-router";
 
 const TuitionCard = ({ stdn }) => {
-   const {_id, title, subjects, daysPerWeek, createdAt, salary, studentClass, location } = stdn;
+   const {_id, title, subjects, daysPerWeek, createdAt, budget, studentClass, location } = stdn;
 
   return (
     <Link to= {`/tuition/${_id}`} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
@@ -72,7 +72,7 @@ const TuitionCard = ({ stdn }) => {
             💰 Salary:
           </p>
           <p className="text-blue-600 font-bold text-lg">
-            {salary} $<span className="text-sm text-gray-500">/Month</span>
+            {budget} $<span className="text-sm text-gray-500">/Month</span>
           </p>
         </div>
       </div>

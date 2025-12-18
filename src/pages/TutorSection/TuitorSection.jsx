@@ -57,7 +57,7 @@ const TuisorSection = () => {
 
               {/* Button */}
               
-                <Link to={`/tutor/${tutor._id}`} className="mt-4 w-full py-2 btn bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                <Link to={`/tutor/${tutor._id}`} className="mt-4 w-full py-2 btn bg-purple-600 text-white rounded-lg hover:bg-indigo-700">
                 View Profile
               </Link>
               
