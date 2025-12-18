@@ -32,7 +32,7 @@ const SignUp = () => {
         role: data.role,
         photoURL: photoURL
       }
-      axios.post('http://localhost:3000/users', userInfo)
+      axios.post(`${import.meta.env.VITE_API_URL}/users`, userInfo)
       .then(result=>{
         if(result.data.insertedId){
           console.log('user created in the database');
@@ -63,7 +63,7 @@ const SignUp = () => {
           photoURL: result.user.photoURL,
           role: 'student',
         }
-        axios.post('http://localhost:3000/users', userInfo)
+        axios.post(`${import.meta.env.VITE_API_URL}/users`, userInfo)
         .then(result=>{
           console.log(result.data);
            navigate(from, { replace: true });

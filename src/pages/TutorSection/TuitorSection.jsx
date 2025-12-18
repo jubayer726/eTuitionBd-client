@@ -8,7 +8,7 @@ const TuisorSection = () => {
   const { data: tutors = [], isLoading } = useQuery({
     queryKey: ["tuitions"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/available-tutors");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/available-tutors`);
       return res.data;
     },
   });

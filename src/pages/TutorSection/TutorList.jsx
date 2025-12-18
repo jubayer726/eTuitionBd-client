@@ -9,7 +9,7 @@ const TutorList = () => {
   const { data: tutors = [], isLoading } = useQuery({
     queryKey: ["tutors"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/tutors");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/tutors`);
       return res.data;
     },
   });

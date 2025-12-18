@@ -173,7 +173,7 @@ const TuitionDetails = () => {
           </div>
         </div>
       )}
-      Header
+      {/* Header */}
       <div className="bg-base-200 p-6 rounded-xl shadow">
         <h1 className="text-3xl font-bold text-center">Student Details</h1>
         <p className="mt-2 text-gray-600 text-center">

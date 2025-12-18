@@ -34,7 +34,7 @@ const TutorForm = () => {
       console.log("Final Tutor Data:", tutorData);
 
       // Send to backend (future API)
-      await axios.post("http://localhost:3000/tutors", tutorData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/tutors`, tutorData);
 
       toast.success("Application Submitted Successfully!");
       reset();
