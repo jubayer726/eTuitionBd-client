@@ -4,6 +4,15 @@
 Students can post tuition requirements, tutors can apply for tuitions, and admins can manage the overall system.
 
 ---
+Admin Email : admin@gmail.com
+Admin Password : admin@gmail.com
+
+Student Email: student@gmail.com
+Student Password: student@gmail.com
+
+Tutor Email: tutor@gmail.com
+Tutor Pass: tutor@gmail.com
+---
 
 ## 🚀 Features
 - Student tuition posting system  
