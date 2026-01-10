@@ -86,7 +86,7 @@ const TuisionList = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredTuitions.map((item) => (
-              <Link
+              <Link key={item._id}
                 to={`/tuition/${item._id}`}
                 className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition"
               >

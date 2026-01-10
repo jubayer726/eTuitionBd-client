@@ -11,21 +11,21 @@ import { Link } from "react-router";
 
 const HeroSection = () => {
   return (
-    <Carousel className="my-5" autoPlay={true} infiniteLoop={true}>
-      <div className="grid grid-cols-2 items-center bg-linear-to-r from-[#ffecef] via-[#f4f1ff] to-[#f3f5ff] px-10">
+    <Carousel className="mb-5" autoPlay={true} infiniteLoop={true}>
+      <div className="grid grid-cols-2 items-center bg-[#fffafc] px-10">
           <div className="">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight text-left">
-              Find your perfect <br /> tutor easily
+            <h1 className="text-4xl md:text-5xl font-bold text-purple-600 leading-tight text-left">
+              Find your <span className="text-[#167570]">perfect <br /> tutor</span> easily
             </h1>
 
-            <p className="text-gray-600 mt-4 text-lg text-left">
+            <p className="text-gray-600 m-4 text-lg text-left">
               Making tutoring easy, fun, and flexible! Now, <br /> students can
               focus on learning and teachers on teaching.
             </p>
 
             <Link
               to="/dashboard/tutor-form"
-              className="mt-6 btn bg-gray-900 text-white px-6 py-3 rounded-lg shadow hover:bg-gray-800 transition "
+              className="btn-primary"
             >
               Get Started →
             </Link>
@@ -42,18 +42,18 @@ const HeroSection = () => {
       </div>
 
     {/* 2nd slide */}
-      <div className="grid grid-cols-2 gap-8 items-center bg-linear-to-r to-[#ffecef] via-[#f4f1ff] from-[#f3f5ff] px-10">
+      <div className="grid grid-cols-2 gap-8 items-center bg-[#e8e5dec6] px-10">
         <img src={carosel2} />
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight text-left">
-              Easily communicate <br /> with tutors
+            <h1 className="text-4xl md:text-5xl font-bold text-purple-600 leading-tight text-left">
+              Easily <span className="text-[#167570]">communicate</span> <br /> with tutors
             </h1>
 
-            <p className="text-gray-600 mt-4 text-lg text-left">
+            <p className="text-gray-600 m-4 text-lg text-left">
               Nomo emm epsam voluplatem quia, <br /> voluptas sit aspernatur audit fugit, sed quis conseptuuntur ma.
             </p>
 
-            <Link to='/tutors' className="mt-6 btn bg-gray-900 text-white px-6 py-3 rounded-lg shadow hover:bg-gray-800 transition ">
+            <Link to='/tutors' className="btn-primary">
               Find a Tutor →
             </Link>
 
@@ -61,18 +61,18 @@ const HeroSection = () => {
       </div>
 
       {/* 3rd Slide */}
-      <div className="grid grid-cols-2 items-center bg-linear-to-r from-[#ffecef] via-[#f4f1ff] to-[#f3f5ff] px-10">
+      <div className="grid grid-cols-2 items-center bg-[#e8e5dec6] px-10">
         <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight text-left">
-              Find experienced  <br />tutor by browsing <br />  categories
+            <h1 className="text-4xl md:text-5xl font-bold text-purple-600 leading-tight text-left">
+              Find <span className="text-[#167570]">experienced  <br />tutor</span> by browsing <br />  categories
             </h1>
 
-            <p className="text-gray-600 mt-4 text-lg text-left">
+            <p className="text-gray-600 m-4 text-lg text-left">
               Making tutoring easy, fun, and flexible! Now, <br /> students can focus
               on learning and teachers on teaching.
             </p>
 
-            <Link to='/tutors' className="mt-6 btn bg-gray-900 text-white px-6 py-3 rounded-lg shadow hover:bg-gray-800 transition ">
+            <Link to='/tutors' className="btn-primary">
               Find a Tutor →
             </Link>
           </div>

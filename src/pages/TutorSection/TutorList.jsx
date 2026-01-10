@@ -29,7 +29,7 @@ const TutorList = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {tutors.map((tutor, i) => (
             <div key={i}
               className="bg-gray-50 rounded-xl shadow-md p-6 hover:shadow-lg transition"
@@ -38,14 +38,14 @@ const TutorList = () => {
               <img
                 src={tutor.photo}
                 alt={tutor.name}
-                className="w-full h-48 object-cover rounded-lg"
+                className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform"
               />
 
               {/* Content */}
               <h3 className="text-xl font-bold mt-4">{tutor.name}</h3>
 
               <p className="text-gray-600 text-sm mt-1">
-                Subject: <span className="font-medium">Suject: {tutor.subjects}</span>
+                Subject: <span className="font-medium">{tutor.subjects}</span>
               </p>
 
               <p className="text-gray-600 text-sm">Location: {tutor.address}</p>
@@ -56,14 +56,15 @@ const TutorList = () => {
               </p>
 
               {/* Button */}
-              <Link to={`/tutor/${tutor._id}`} className="mt-4 btn w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-indigo-700">
+              <Link to={`/tutor/${tutor._id}`} className="mt-4 btn w-full py-2 bg-gradient-to-r from-[#8e0e7b] to-[#5c0a5f]
+         hover:from-[#a0148f] hover:to-[#6f0d72] transition-all duration-300 text-white rounded-lg">
                 View Profile
               </Link>
             </div>
           ))}
         </div>
         <div className='flex justify-center'>
-        <Link to ='/tutors' className='btn p-5 m-10 bg-purple-600 text-white font-bold'>Show More</Link>
+        <Link to ='/tutors' className='btn-primary mt-8'>Show More</Link>
       </div>
       </div>
     </div>

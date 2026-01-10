@@ -14,7 +14,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "border border-blue-500" : ""
+            isActive ? "border-b-3 border-blue-500" : ""
           }
         >
           Home
@@ -24,7 +24,7 @@ const Navbar = () => {
         <NavLink
           to="/tuitions"
           className={({ isActive }) =>
-            isActive ? "border border-blue-500" : ""
+            isActive ? "border-b-3 border-blue-500" : ""
           }
         >
           Tuitions
@@ -34,7 +34,7 @@ const Navbar = () => {
         <NavLink
           to="/tutors"
           className={({ isActive }) =>
-            isActive ? "border border-blue-500" : ""
+            isActive ? "border-b-3 border-blue-500" : ""
           }
         >
           Tutors
@@ -44,7 +44,7 @@ const Navbar = () => {
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            isActive ? "border border-blue-500" : ""
+            isActive ? "border-b-3 border-blue-500" : ""
           }
         >
           About Us
@@ -54,7 +54,7 @@ const Navbar = () => {
         <NavLink
           to="/contact"
           className={({ isActive }) =>
-            isActive ? "border border-blue-500" : ""
+            isActive ? "border-b-3 border-blue-500" : ""
           }
         >
           Contact Us
@@ -64,7 +64,7 @@ const Navbar = () => {
         <NavLink
           to="/dashboard"
           className={({ isActive }) =>
-            isActive ? "border border-blue-500" : ""
+            isActive ? "border-b-3 border-blue-500" : ""
           }
         >
           Dashboard
@@ -74,9 +74,9 @@ const Navbar = () => {
   );
 
   return (
-    <div className="fixed w-full bg-[#F3F4F6] z-10 shadow-sm">
-      <Container>
-        <div className="navbar-start">
+    <div className="bg-gradient-to-r from-[#e782e7] via-[#e669cb] to-[#e782e7] sticky top-0 z-50 shadow-sm">
+        <div className="navbar w-11/12 mx-auto  sticky top-0 z-50">
+          <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -103,18 +103,21 @@ const Navbar = () => {
             </ul>
           </div>
           {/* <Logo></Logo> */}
-        </div>
-        <div className="flex flex-row  items-center justify-between gap-3 md:gap-0">
           {/* Logo */}
           <Link to="/">
-            <img src={logo} alt="logo" width="100" height="100" />
+            <img src={logo} alt="logo" width="90" height="90" />
           </Link>
+        </div>
+
+        <div className="navbar-center hidden lg:flex">
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1 font-semibold">{links}</ul>
           </div>
+        </div>
+
 
           {/* Dropdown Menu */}
-          <div className="relative">
+          <div className="navbar-end relative">
             <div className="flex flex-row items-center gap-3">
               {/* Dropdown btn */}
               <div
@@ -181,7 +184,6 @@ const Navbar = () => {
             )}
           </div>
         </div>
-      </Container>
     </div>
   );
 };

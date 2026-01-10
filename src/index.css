@@ -1,2 +1,11 @@
 @import 'tailwindcss';
 @plugin "daisyui";
+
+.btn-primary {
+  @apply px-6 py-2 rounded-md text-white font-semibold
+         bg-gradient-to-r from-[#8e0e7b] to-[#5c0a5f]
+         hover:from-[#a0148f] hover:to-[#6f0d72]
+         transition-all duration-300 ease-in-out
+         shadow-md hover:shadow-lg
+         active:scale-95;
+}
