@@ -31,7 +31,7 @@ const EditTuition = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="max-w-xl mx-auto bg-white p-6 rounded shadow space-y-3"
     >
-      <h2 className="text-xl font-bold">Edit Tuition</h2>
+      <h2 className="text-xl font-bold text-info">Edit Tuition</h2>
 
       <input {...register("title")} className="input input-bordered w-full" />
       <input {...register("studentClass")} className="input input-bordered w-full" />

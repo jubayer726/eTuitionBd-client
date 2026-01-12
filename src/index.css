@@ -9,3 +9,22 @@
          shadow-md hover:shadow-lg
          active:scale-95;
 }
+
+.text-primary {
+  @apply text-[purple-600];
+}
+.text-secondary {
+  @apply text-[#167570];
+}
+.text-info {
+  @apply text-[#0b2b5c];
+}
+strong {
+  @apply text-[#0b2b5c];
+}
+.text-success {
+  @apply text-green-600;
+}
+.text-dashboard {
+  @apply text-[#0b2b5c] font-bold p-4 text-xl;
+}

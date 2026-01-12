@@ -28,25 +28,25 @@ import toast from "react-hot-toast";
     <div className="max-w-4xl mx-auto p-6">
       {/* Header */}
       <div className="bg-base-200 p-6 rounded-xl shadow">
-        <h1 className="text-3xl font-bold text-center">Tutor Details</h1>
+        <h1 className="text-3xl font-bold text-center text-primary">Tutor <span className="text-secondary">Details</span></h1>
         <p className="mt-2 text-gray-600 text-center">
           Find all information about the tuition class, teacher, schedule, and fees.
         </p>
       </div>
 
       {/* Tuition Info */}
-      <div className="mt-6 grid md:grid-cols-2 gap-6 border">
+      <div className="mt-6 grid md:grid-cols-2 gap-6 shadow-lg">
         
         {/* Tuition Card */}
         <div className="bg-base-100 shadow rounded-xl pb-5">
-          <h2 className="text-xl font-semibold p-5 text-center">Tutor</h2>
+          <h2 className="text-2xl font-semibold p-5 text-center text-info">Tutor</h2>
           <div className="flex items-center justify-center"> <img src={photo} 
             alt="Sudent Photo" className="w-full h-48 object-cover rounded-2xl px-5"/></div>
         </div>
 
         {/* Teacher Card */}
         <div className="bg-base-100 shadow rounded-xl p-5">
-          <h2 className="text-xl font-semibold">Teacher Information</h2>
+          <h2 className="text-2xl font-semibold text-info">Teacher Information</h2>
           <ul className="mt-3 space-y-2 text-gray-700">
             <li><strong>Name:</strong> {name}</li>
             <li><strong>Qualification:</strong> {qualification}</li>
@@ -61,8 +61,8 @@ import toast from "react-hot-toast";
       </div>
 
       {/* Schedule */}
-      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border">
-        <h2 className="text-xl font-semibold mb-3">Class Schedule</h2>
+      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow-lg">
+        <h2 className="text-2xl font-semibold mb-3 text-info">Class Schedule</h2>
 
         <div className="grid md:grid-cols-3 gap-4">
           <div className="bg-base-200 p-4 rounded-lg">
@@ -83,8 +83,8 @@ import toast from "react-hot-toast";
       </div>
 
       {/* Fees */}
-      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border">
-        <h2 className="text-xl font-semibold mb-3">Tuition Fees</h2>
+      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow-lg">
+        <h2 className="text-2xl font-semibold mb-3 text-info">Tuition Fees</h2>
 
         <div className="flex justify-between text-lg">
           <p>Monthly Fee (USD)</p>
@@ -93,8 +93,9 @@ import toast from "react-hot-toast";
       </div>
 
       {/* Apply Button */}
-      <div className="mt-8 text-center">
+      <div className="mt-8 text-center flex gap-4 justify-around">
         <button onClick={handleApply} className="btn btn-primary btn-wide text-lg"> Apply</button>
+        <button onClick={() => window.history.back()} className="btn btn-primary btn-wide text-lg"> ⬅ Back</button>
       </div>
     </div>
   );

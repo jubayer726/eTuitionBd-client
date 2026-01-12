@@ -1,5 +1,6 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
 import carosel1 from '../../../assets/images/banner/hero1.jpg'
 import carosel2 from '../../../assets/images/banner/hero2.jpg'
@@ -9,8 +10,13 @@ import { Link } from "react-router";
 const HeroSection = () => {
   return (
     <Carousel className="" autoPlay={true} infiniteLoop={true}>
-      <div className="grid grid-cols-2 gap-8 items-center bg-[#fffafc] px-10">
-          <div className="">
+      <div className="grid grid-cols-2 gap-4 items-center bg-[#fffafc] px-10">
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <h1 className="text-2xl md:text-5xl font-bold text-purple-600 leading-tight text-left">
               Find your <span className="text-[#167570]">perfect <br /> tutor</span> easily
             </h1>
@@ -34,14 +40,19 @@ const HeroSection = () => {
                 tutor
               </p>
             </div>
-          </div>
+          </motion.div>
           <img src={carosel1} />
       </div>
 
     {/* 2nd slide */}
       <div className="grid grid-cols-2 gap-8 items-center bg-[#e8e5dec6] px-10">
         <img src={carosel2} />
-          <div>
+          <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          >
             <h1 className="text-2xl md:text-5xl font-bold text-purple-600 leading-tight text-left">
               Easily <span className="text-[#167570]">communicate</span> <br /> with tutors
             </h1>
@@ -54,12 +65,17 @@ const HeroSection = () => {
               Find a Tutor →
             </Link>
 
-          </div>
+          </motion.div>
       </div>
 
       {/* 3rd Slide */}
       <div className="grid grid-cols-2 gap-8 items-center bg-[#e8e5dec6] px-10">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
             <h1 className="text-lg md:text-5xl font-bold text-purple-600 leading-tight text-left">
               Find <span className="text-[#167570]">experienced  <br />tutor</span> by browsing <br />  categories
             </h1>
@@ -72,7 +88,7 @@ const HeroSection = () => {
             <Link to='/tutors' className="btn-primary">
               Find a Tutor →
             </Link>
-          </div>
+          </motion.div>
 
         <img src={carosel3} />
       </div>

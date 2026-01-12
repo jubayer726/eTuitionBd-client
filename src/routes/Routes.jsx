@@ -29,7 +29,6 @@ import AdminRoute from './AdminRoute'
 import AdminReports from '../Dashboboard/AdminDashboard/AdminReports'
 import TuitionTypes from '../components/Home/TuitionType/TuitionType'
 import HowItWorks from '../components/Home/HowItWork/HowItWorks'
-import Dashboard2 from '../Dashboboard/Dashboard2'
 
 
 export const router = createBrowserRouter([
@@ -57,10 +56,6 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact />,
-      },
-      {
-        path: 'dashboard2',
-        element: <Dashboard2 />,
       },
       {
         path: '/tuition/:id',

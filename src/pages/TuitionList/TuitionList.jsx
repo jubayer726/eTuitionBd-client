@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaHome, FaCalendarAlt, FaUser } from "react-icons/fa";
 import { MdClass, MdSubject } from "react-icons/md";
 import axios from "axios";
@@ -36,7 +37,13 @@ const TuisionList = () => {
   });
 
   return (
-    <div className="py-16 bg-gray-50">
+    <motion.div
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="py-16 bg-gray-50"
+    >
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-10">
@@ -88,7 +95,7 @@ const TuisionList = () => {
             {filteredTuitions.map((item) => (
               <Link key={item._id}
                 to={`/tuition/${item._id}`}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition"
+                className="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-4 hover:shadow-xl transition-transform duration-300"
               >
                 {/* Top Row */}
                 <div className="flex justify-between items-start">
@@ -158,7 +165,7 @@ const TuisionList = () => {
                       </p>
                     </div>
                 </div>
-
+            
                 {/* Footer */}
                 <div className="flex justify-between items-center mt-6">
                   <p className="text-gray-600"><span className="font-semibold">Posted at:</span> <span className="text-sm">{new Date(item.createdAt).toLocaleString("en-BD")}</span> </p>
@@ -176,7 +183,7 @@ const TuisionList = () => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

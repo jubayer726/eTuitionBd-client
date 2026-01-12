@@ -11,6 +11,7 @@ import { useState } from "react";
 const TuitionDetails = () => {
   const [openModal, setOpenModal] = useState(false);
   const { user } = useAuth();
+  console.log(user);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ const TuitionDetails = () => {
       {openModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white w-full max-w-md p-6 rounded-lg shadow-lg relative">
-            <h2 className="text-xl font-bold mb-4">Apply for Tuition</h2>
+            <h2 className="text-xl font-bold mb-4 text-primary">Apply for <span className="text-secondary">Tuition</span></h2>
 
             <form
               onSubmit={async (e) => {
@@ -165,7 +166,7 @@ const TuitionDetails = () => {
                   Cancel
                 </button>
 
-                <button type="submit" className="btn btn-info">
+                <button type="submit" className="btn btn-primary">
                   Submit Application
                 </button>
               </div>
@@ -175,15 +176,19 @@ const TuitionDetails = () => {
       )}
       {/* Header */}
       <div className="bg-base-200 p-6 rounded-xl shadow">
-        <h1 className="text-3xl font-bold text-center">Student Details</h1>
+        <h1 className="text-3xl font-bold text-center text-primary">
+          Student <span className="text-secondary">Details</span>
+        </h1>
         <p className="mt-2 text-gray-600 text-center">
           Full information about the student, academic level and contact
           details.
         </p>
       </div>
       {/* Student Basic Info */}
-      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border">
-        <h2 className="text-2xl font-semibold mb-4">Basic Information</h2>
+      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border border-purple-600">
+        <h2 className="text-2xl font-semibold text-info mb-4">
+          Basic Information
+        </h2>
 
         <div className="grid md:grid-cols-2 gap-4 text-gray-700">
           <div>
@@ -211,16 +216,20 @@ const TuitionDetails = () => {
         </div>
       </div>
       {/* Address Info */}
-      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border">
-        <h2 className="text-2xl font-semibold mb-4">Address Information</h2>
+      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border border-purple-600">
+        <h2 className="text-2xl font-semibold mb-4 text-info">
+          Address Information
+        </h2>
 
         <p className="text-gray-700">
           <strong>Full Address:</strong> {location}
         </p>
       </div>
       {/* Tuition Preference */}
-      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border">
-        <h2 className="text-2xl font-semibold mb-4">Tuition Preference</h2>
+      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border border-purple-600">
+        <h2 className="text-2xl font-semibold mb-4 text-info">
+          Tuition Preference
+        </h2>
 
         <div className="grid md:grid-cols-2 gap-4 text-gray-700">
           <p>
@@ -233,21 +242,25 @@ const TuitionDetails = () => {
             <strong>Days per Week:</strong> {daysPerWeek}
           </p>
           <p>
-            <strong>Budget:</strong> {salary} BDT / Month
+            <strong>Budget:</strong>{" "}
+            <span className="text-success">{salary} USD/Month</span>
           </p>
         </div>
       </div>
       {/* Extra Notes */}
-      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border">
-        <h2 className="text-2xl font-semibold mb-4">Additional Notes</h2>
+      <div className="mt-6 bg-base-100 p-6 rounded-xl shadow border border-purple-600">
+        <h2 className="text-2xl font-semibold mb-4 text-info">
+          Additional Notes
+        </h2>
 
         <p className="text-gray-700">{description}</p>
       </div>
       {/* Buttons */}
-      <div className="mt-8 flex justify-center gap-4">
-        <button onClick={() => setOpenModal(true)} className="btn btn-info">
+      <div className="mt-8 flex justify-around gap-4">
+        <button onClick={() => setOpenModal(true)} className="btn btn-primary">
           Apply Now
         </button>
+        <button onClick={() => window.history.back()} className="btn-primary">⬅ Back</button>
       </div>
     </div>
   );

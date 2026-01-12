@@ -19,7 +19,8 @@ const DashBoard = () => {
 
 
   return (
-    <div className="drawer lg:drawer-open w-7xl mx-auto">
+    <div className="bg-gray-50">
+      <div className="drawer lg:drawer-open w-7xl mx-auto">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
@@ -62,14 +63,14 @@ const DashBoard = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+        <div className="flex min-h-full flex-col items-start bg-base-300 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             {/* List item */}
             <li>
               <Link
                 to="/"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right text-dashboard"
                 data-tip="Homepage"
               >
                 {/* Home icon */}
@@ -94,7 +95,7 @@ const DashBoard = () => {
             {role === "student" && <>
             <NavLink  to="/dashboard/student-dashboard" className={({ isActive }) =>isActive? "bg-gray-300": "" }>
               <h2
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                 data-tip="Student Dashboard"
               >
                 <PiStudentBold />
@@ -105,7 +106,7 @@ const DashBoard = () => {
             <NavLink to="/dashboard/my-tuition" className={({ isActive }) =>isActive? "bg-gray-300": "" }>
               
               <h2
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                 data-tip="My Tuition"
               >
                 <MdOutlineEditNotifications />
@@ -116,7 +117,7 @@ const DashBoard = () => {
             <NavLink to="/dashboard/student-form" className={({ isActive }) =>isActive? "bg-gray-300": "" }>
               
               <h2
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                 data-tip="Post New Tuition"
               >
                 <FaWpforms />
@@ -131,7 +132,7 @@ const DashBoard = () => {
               <NavLink to="/dashboard/tutor-dashboard" className={({isActive})=> isActive? "bg-gray-300" : ""}>
                   
                 <h2
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                   data-tip="Tutor-Dashboard"
                 >
                   <FaTasks />
@@ -143,7 +144,7 @@ const DashBoard = () => {
 
               <NavLink to="/dashboard/tutor-form" className={({isActive})=> isActive? "bg-gray-300" : ""}>
                   <h2
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                     data-tip="Tutor-Form"
                   >
                     <GiTeacher />
@@ -162,7 +163,7 @@ const DashBoard = () => {
                 <NavLink to="/dashboard/users-management" className={({isActive})=> isActive? "bg-gray-300" : ""}>
                   <h2
                     
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                     data-tip="Manage Users"
                   >
                     <FaUsersGear />
@@ -176,7 +177,7 @@ const DashBoard = () => {
                   <NavLink to="/dashboard/admin-dashboard" className={({isActive})=> isActive? "bg-gray-300" : ""}>
                   <h2
                     
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                     data-tip="Manage Tuition"
                   >
                     <MdOutlineSignpost />
@@ -190,7 +191,7 @@ const DashBoard = () => {
                   <NavLink to="/dashboard/reports" className={({isActive})=> isActive? "bg-gray-300" : ""}>
                   <h2
                     
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                     data-tip="Reports & Analytics"
                   >
                     <TbReportMoney />
@@ -204,7 +205,7 @@ const DashBoard = () => {
 
             <NavLink to='/dashboard/profile' className={({isActive})=> isActive? "bg-gray-300" : ""}>
               <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right text-dashboard"
                 data-tip="Settings"
               >
                 {/* Settings icon */}
@@ -231,7 +232,7 @@ const DashBoard = () => {
               {/* Logout */}
               <li>
               <button  onClick={logOut}
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex gap-1 p-1 items-center hover:bg-gray-200 text-dashboard"
                 data-tip="Log-Out"
               >
                 <FiLogOut />
@@ -241,6 +242,7 @@ const DashBoard = () => {
           </ul>
         </div>
       </div>
+    </div>
     </div>
   );
 };

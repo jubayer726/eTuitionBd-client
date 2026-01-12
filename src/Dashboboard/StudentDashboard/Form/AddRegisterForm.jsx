@@ -40,7 +40,7 @@ const AddRegisterForm = () => {
 
   return (
     <div className="max-w-xl mx-auto bg-white p-8 shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Post a Tuition</h2>
+      <h2 className="text-2xl font-bold mb-4 text-info text-center">Post a Tuition</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
@@ -129,7 +129,7 @@ const AddRegisterForm = () => {
 
         <button
           type="submit"
-          className="w-full bg-indigo-600 text-white py-2 rounded"
+          className="w-full btn-primary"
         >
           Submit Tuition
         </button>

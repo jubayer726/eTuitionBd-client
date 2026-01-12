@@ -30,7 +30,7 @@ const MyTuitions = () => {
 
   return (
     <div className="bg-gray-100">
-      <h2 className="text-2xl font-bold  p-8">My Tuition Posts</h2>
+      <h2 className="text-2xl font-bold p-8 text-info">My Tuition Posts</h2>
 
      <div className="grid grid-cols-4 gap-8">
        {tuitions.map((t) => (

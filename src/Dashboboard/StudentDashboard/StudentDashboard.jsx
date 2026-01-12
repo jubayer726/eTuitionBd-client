@@ -81,8 +81,8 @@ const StudentDashboard = () => {
 
   return (
     <div>
-      <div className="border border-gray-600 p-5 m-5">
-        <h2 className="text-2xl font-bold mb-4 p-5">My Approved Tuitions</h2>
+      <div className="border border-purple-600 p-5 m-5">
+        <h2 className="text-2xl font-bold mb-4 p-5 text-info">My Approved Tuitions</h2>
         <div className="overflow-x-auto">
           <table className="table table-zebra">
             
@@ -110,8 +110,8 @@ const StudentDashboard = () => {
         </div>
       </div>
 
-      <div className="border border-gray-600 p-5 m-5">
-        <h2 className="text-2xl font-bold mb-4 p-5">Tutor Applycation</h2>
+      <div className="border border-purple-600 p-5 m-5">
+        <h2 className="text-2xl font-bold mb-4 p-5 text-info">Tutor Applycation</h2>
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -180,8 +180,8 @@ const StudentDashboard = () => {
 
       {/* Payment History */}
 
-      <div className="border border-gray-600 p-5 m-5">
-        <h2 className="text-2xl font-bold mb-4 p-5">Payment History</h2>
+      <div className="border border-purple-600 p-5 m-5">
+        <h2 className="text-2xl font-bold mb-4 p-5 text-info">Payment History</h2>
 
         <div className="overflow-x-auto">
           <table className="table table-zebra">

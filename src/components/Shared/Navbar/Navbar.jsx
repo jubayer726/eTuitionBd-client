@@ -70,21 +70,11 @@ const Navbar = () => {
           Dashboard
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/dashboard2"
-          className={({ isActive }) =>
-            isActive ? "border-b-3 border-blue-500" : ""
-          }
-        >
-          Dashboard2
-        </NavLink>
-      </li>
     </>
   );
 
   return (
-    <div className="bg-gradient-to-r from-[#f36af3] via-[#e669cb] to-[#f461f4] sticky top-0 z-50 shadow-sm">
+    <div className="bg-gradient-to-r from-[#e95ae9] via-[#e669cb] to-[#ef4fef] sticky top-0 z-50 shadow-sm">
         <div className="navbar w-11/12 mx-auto  sticky top-0 z-50">
           <div className="navbar-start">
           <div className="dropdown">
@@ -107,7 +97,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-info font-semibold"
             >
               {links}
             </ul>
@@ -121,7 +111,7 @@ const Navbar = () => {
 
         <div className="navbar-center hidden lg:flex">
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 font-semibold">{links}</ul>
+            <ul className="menu menu-horizontal px-1 font-semibold text-xl text-white">{links}</ul>
           </div>
         </div>
 
