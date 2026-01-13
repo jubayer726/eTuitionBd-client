@@ -27,7 +27,7 @@ const HeroSection = () => {
             </p>
 
             <Link
-              to="/dashboard/tutor-form"
+              to="/tuitions"
               className="btn-primary"
             >
               Get Started →

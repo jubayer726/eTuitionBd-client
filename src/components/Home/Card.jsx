@@ -6,7 +6,7 @@ const TuitionCard = ({ stdn }) => {
    const {_id, title, subjects, daysPerWeek, createdAt, budget, studentClass, location } = stdn;
 
   return (
-    <Link to= {`/tuition/${_id}`} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+    <Link to= {`/tuition/${_id}`} className="bg-white rounded-xl shadow-lg p-6 hover:scale-105 hover:shadow-xl transition">
 
       {/* Top Row */}
       <div className="flex justify-between items-start">
@@ -17,45 +17,45 @@ const TuitionCard = ({ stdn }) => {
       </div>
 
       {/* Title */}
-      <h2 className="text-2xl font-bold text-gray-900 mt-3">
+      <h2 className="font-bold text-gray-900 mt-3">
         {title}
       </h2>
 
       {/* Tags */}
-      <div className="flex gap-3 mt-4 flex-wrap">
-        <span className="flex items-center gap-2 bg-purple-600 text-white px-3 py-1 rounded-md text-sm">
+      <div className="flex gap-3 justify-between mt-4 flex-wrap">
+        <span className="flex items-center gap-2 bg-purple-600 text-white px-1 py-1 rounded-md text-xs">
           <FaHome /> Home Tutoring
         </span>
-        <span className="flex items-center gap-2 bg-teal-600 text-white px-3 py-1 rounded-md text-sm">
+        <span className="flex items-center gap-2 bg-teal-600 text-white px-1 py-1 rounded-md text-xs">
           <FaCalendarAlt /> an hour ago
         </span>
       </div>
 
       {/* Details Grid */}
-      <div className="grid md:grid-cols-2 gap-6 mt-6 text-gray-700">
+      <div className="grid md:grid-cols-2 gap-4 mt-6 text-gray-700 justify-between">
         <div>
-          <p className="flex items-center gap-2 font-medium">
+          <p className="flex items-center gap-2 font-medium text-xs">
             <MdClass /> Class:
           </p>
-          <p className="text-gray-600">{studentClass}</p>
+          <p className="text-gray-600 text-sm">{studentClass}</p>
         </div>
 
         <div>
-          <p className="flex items-center gap-2 font-medium">
+          <p className="flex items-center gap-2 font-medium text-xs">
             <FaUser /> Preferred Tutor:
           </p>
-          <p className="text-gray-500">preferredTutor</p>
+          <p className="text-gray-500 text-sm">preferredTutor</p>
         </div>
 
         <div>
-          <p className="flex items-center gap-2 font-medium">
+          <p className="flex items-center gap-2 font-medium text-xs">
             <FaCalendarAlt /> Tutoring Days:
           </p>
-          <p className="text-gray-500">{daysPerWeek} Days/Week</p>
+          <p className="text-gray-500 text-sm">{daysPerWeek} Days/Week</p>
         </div>
 
         <div>
-          <p className="flex items-center gap-2 font-medium">
+          <p className="flex items-center gap-2 font-medium text-xs">
             <MdSubject /> Subject:
           </p>
           <div className="flex gap-2 flex-wrap mt-1">
@@ -67,8 +67,8 @@ const TuitionCard = ({ stdn }) => {
           </div>
         </div>
 
-        <div>
-          <p className="flex items-center gap-2 font-medium">
+        <div className="text-sm">
+          <p className="flex items-center gap-2 font-medium ">
             💰 Salary:
           </p>
           <p className="text-blue-600 font-bold text-lg">

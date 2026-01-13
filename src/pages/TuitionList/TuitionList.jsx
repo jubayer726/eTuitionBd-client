@@ -48,7 +48,7 @@ const TuisionList = () => {
         {/* Heading */}
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-purple-600">
-            Tuition <span className="text-[#167570]">Listings</span> 
+            Tuition <span className="text-[#167570]">Listings</span>
           </h2>
           <p className="text-gray-600 mt-2">
             Find the best tuition that matches your learning needs
@@ -91,9 +91,10 @@ const TuisionList = () => {
         {filteredTuitions.length === 0 ? (
           <p className="text-center text-purple-600">No tuition found 😔</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {filteredTuitions.map((item) => (
-              <Link key={item._id}
+              <Link
+                key={item._id}
                 to={`/tuition/${item._id}`}
                 className="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-4 hover:shadow-xl transition-transform duration-300"
               >
@@ -106,46 +107,49 @@ const TuisionList = () => {
                 </div>
 
                 {/* Title */}
-                <h2 className="text-2xl font-bold text-gray-900 mt-3">
-                  {item.title}
-                </h2>
+                <h2 className="font-bold text-gray-900 mt-3">{item.title}</h2>
 
                 {/* Tags */}
-                <div className="flex gap-3 mt-4 flex-wrap">
-                  <span className="flex items-center gap-2 bg-purple-600 text-white px-3 py-1 rounded-md text-sm">
+                <div className="flex gap-4 justify-between mt-4 flex-wrap">
+                  <span className="flex items-center gap-1 bg-purple-600 text-white px-1 py-1 rounded-md text-xs">
                     <FaHome /> Home Tutoring
                   </span>
-                  <span className="flex items-center gap-2 bg-teal-600 text-white px-3 py-1 rounded-md text-sm">
+                  <span className="flex items-center gap-1 bg-teal-600 text-white px-1 py-1 rounded-md text-xs">
                     <FaCalendarAlt /> an hour ago
                   </span>
                 </div>
 
                 {/* Details Grid */}
-                <div className="grid md:grid-cols-2 gap-6 mt-6 text-gray-700">
-                  <div>
-                    <p className="flex items-center gap-2 font-medium">
-                      <MdClass /> Class:
-                    </p>
-                    <p className="text-gray-600">{item.studentClass}</p>
+                <div
+                // className="grid md:grid-cols-2 justify-between gap-8 mt-6 text-gray-700"
+                >
+                  <div className="flex justify-between items-center gap-4 py-4">
+                    <div className="flex-1">
+                      <p className="flex items-center gap-1 font-medium text-xs">
+                        <MdClass /> Class:
+                      </p>
+                      <p className="text-gray-600 text-sm">{item.studentClass}</p>
+                    </div>
+
+                    <div className="flex-1">
+                      <p className="flex items-center gap-2 font-medium text-xs">
+                        <FaUser /> Preferred Tutor:
+                      </p>
+                      <p className="text-gray-600 text-sm">preferredTutor</p>
+                    </div>
                   </div>
 
-                  <div>
-                    <p className="flex items-center gap-2 font-medium">
-                      <FaUser /> Preferred Tutor:
-                    </p>
-                    <p className="text-gray-600">preferredTutor</p>
-                  </div>
-
-                  <div>
-                    <p className="flex items-center gap-2 font-medium">
-                      <FaCalendarAlt /> Tutoring Days:
-                    </p>
-                    <p className="text-gray-600">
-                      {item.daysPerWeek} Days/Week
-                    </p>
-                  </div>
-                    <div>
-                      <p className="flex items-center gap-2 font-medium">
+                  <div className="flex justify-between items-center gap-4">
+                    <div className="flex-1">
+                      <p className="flex items-center gap-2 font-medium text-xs">
+                        <FaCalendarAlt /> Tutoring Days:
+                      </p>
+                      <p className="text-gray-600 text-sm">
+                        {item.daysPerWeek} Days/Week
+                      </p>
+                    </div>
+                    <div className="flex-1">
+                      <p className="flex items-center gap-2 font-medium text-xs">
                         <MdSubject /> Subject:
                       </p>
                       <div className="flex gap-2 flex-wrap mt-1">
@@ -154,29 +158,39 @@ const TuisionList = () => {
                         </span>
                       </div>
                     </div>
+                  </div>
 
-                    <div>
-                      <p className="flex items-center gap-2 font-medium">
+                  <div className="flex justify-between items-center gap-4 my-5">
+                    <div className="flex-1">
+                      <p className="flex items-center gap-2 font-medium text-xs">
                         💰 Salary:
                       </p>
-                      <p className="text-blue-600 font-bold text-lg">
+                      <p className="text-blue-600 font-bold text-sm">
                         {item.budget} $
-                        <span className="text-sm text-gray-500">/Month</span>
+                        <span className="text-xs text-gray-500">/Month</span>
                       </p>
                     </div>
+
+                    <div className="flex-1 items-center">
+                      <div className="flex justify-between items-center">
+                      <p className="text-gray-600">
+                        <span className="font-semibold text-xs">Posted at:</span>{" "}
+                        <span className="text-sm">
+                          {new Date(item.createdAt).toLocaleDateString("en-BD")}
+                        </span>{" "}
+                      </p>
+                    </div>
+                    </div>
+                  </div>
                 </div>
-            
-                {/* Footer */}
-                <div className="flex justify-between items-center mt-6">
-                  <p className="text-gray-600"><span className="font-semibold">Posted at:</span> <span className="text-sm">{new Date(item.createdAt).toLocaleString("en-BD")}</span> </p>
 
-
-                  {/* <Link
-                        to={`/tuition/${_id}`}
-                        className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-2 rounded-lg hover:scale-105 transition"
-                      >
-                        View Details
-                      </Link> */}
+                <div className="text-center mt-4">
+                  <Link
+                  to={`/tuition/${item._id}`}
+                  className="btn border border-purple-600 w-full mt-4 text-secondary"
+                >
+                  View Details
+                </Link>
                 </div>
               </Link>
             ))}

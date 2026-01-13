@@ -1,10 +1,17 @@
 import Container from "../Container";
+import { PiStudentBold } from "react-icons/pi";
 import { AiOutlineMenu } from "react-icons/ai";
+import { GiTeacher } from "react-icons/gi";
+import { FaHome } from "react-icons/fa";
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import avatarImg from "../../../assets/images/placeholder.jpg";
 import logo from "../../../assets/images/logo-flat.png";
+import { FcAbout } from "react-icons/fc";
+import { MdContactMail} from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
+
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +23,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? "border-b-3 border-blue-500" : ""
           }
-        >
-          Home
+        ><FaHome />Home
         </NavLink>
       </li>
       <li>
@@ -26,8 +32,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? "border-b-3 border-blue-500" : ""
           }
-        >
-          Tuitions
+        > <PiStudentBold />Tuitions
         </NavLink>
       </li>
       <li>
@@ -36,7 +41,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? "border-b-3 border-blue-500" : ""
           }
-        >
+        ><GiTeacher />
           Tutors
         </NavLink>
       </li>
@@ -46,7 +51,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? "border-b-3 border-blue-500" : ""
           }
-        >
+        ><FcAbout />
           About Us
         </NavLink>
       </li>
@@ -56,7 +61,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? "border-b-3 border-blue-500" : ""
           }
-        >
+        ><MdContactMail />
           Contact Us
         </NavLink>
       </li>
@@ -66,7 +71,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? "border-b-3 border-blue-500" : ""
           }
-        >
+        ><RxDashboard />
           Dashboard
         </NavLink>
       </li>
@@ -111,7 +116,7 @@ const Navbar = () => {
 
         <div className="navbar-center hidden lg:flex">
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 font-semibold text-xl text-white">{links}</ul>
+            <ul className="menu menu-horizontal px-1 font-semibold text-white">{links}</ul>
           </div>
         </div>
 
